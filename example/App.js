@@ -9,8 +9,9 @@ export default class App extends Component {
   }
 
   render() {
+    const { accuracy } = this.state
     const borderColor = this.state.borderActive ? "#00FF00" : "transparent"
-    const percent = this.state.accuracy * 100
+    const percent = accuracy * 100
     const gaugeHeight = `${percent.toString()}%`
     return (
       <View style={{ flex: 1, justifyContent: "space-between", backgroundColor: "black" }}>
@@ -21,11 +22,11 @@ export default class App extends Component {
             style={{ width: 300 }}
           />
           <Text style={{ fontSize: 24, color: "white", alignSelf: "center" }}>
-            {this.state.accuracy.toFixed(4)}
+            {accuracy.toFixed(4)}
           </Text>
         </View>
         <View style={{ bottom: 100, alignItems: "center" }}>
-          <Identifier accuracy={this.state.accuracy} height={300} />
+          <Identifier accuracy={accuracy} />
         </View>
       </View>
     )

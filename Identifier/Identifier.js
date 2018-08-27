@@ -1,22 +1,22 @@
 import React, { Component } from "react"
-import { StyleSheet, View, Slider, Image } from "react-native"
+import { StyleSheet, View, Image } from "react-native"
 
-const NIC_STAMP = require("./nic-stamp.png")
 const INNER_MARGIN = { margin: 5 }
 const OUTER_WIDTH = 5
 const INNER_WIDTH = 3
 
 export class Identifier extends Component {
-  state = { borderActive: false, showStamp: false }
+  state = { borderActive: false, showImage: false }
 
-  static defaultProps = { height: 150, width: null, accuracy: 0, blinkRate: 750, stamp: true }
+  static defaultProps = {
+    style: { height: 150, width: null },
+    accuracy: 0,
+    blinkRate: 750,
+    gaugeWidth: 8
+  }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.accuracy > 0.85) {
-      this.startStamp
-    } else {
-      this.stopStamp
-    }
+    props.accuracy > 0.85 ? this.startImage : this.stopImage
     return state
   }
 
@@ -31,12 +31,12 @@ export class Identifier extends Component {
       }, blinkRate * (1 - accuracy) + 60)
     }
     timer()
-    this.startStamp()
+    this.startImage()
   }
 
   handleBorderColor() {
     const { borderActive } = this.state
-    const { accuracy, height, width } = this.props
+    const { accuracy } = this.props
     if (borderActive && accuracy > 0.85) {
       return "#00FF00"
     } else if (borderActive && accuracy < 0.5) {
@@ -61,43 +61,55 @@ export class Identifier extends Component {
     }
   }
 
-  renderStamp() {
+  renderImage() {
+    const {
+      image,
+      imageStyle,
+      style: { height, width }
+    } = this.props
+    const aspectRatio = width ? null : 0.8
     return (
-      <Image
+      <View
         style={{
           position: "absolute",
-          alignSelf: "center",
-          top: "40%",
-          transform: [{ rotate: "305deg" }, { scale: 0.75 }]
+          justifyContent: "center",
+          alignItems: "center"
         }}
-        source={NIC_STAMP}
-      />
+      >
+        <Image style={[styles.image, { height, width, aspectRatio }, imageStyle]} source={image} />
+      </View>
     )
   }
 
-  startStamp() {
+  startImage() {
     this.interval = setInterval(() => {
       this.setState(state => {
-        return { showStamp: !state.showStamp }
+        return { showImage: !state.showImage }
       })
     }, 500)
   }
 
-  stopStamp() {
+  stopImage() {
     this.interval && this.interval.clear()
   }
 
   render() {
-    const { accuracy, height, width, stamp } = this.props
-    const { showStamp } = this.state
+    const {
+      accuracy,
+      image,
+      style,
+      style: { width, height },
+      gaugeWidth
+    } = this.props
+    const { showImage } = this.state
     const gaugeHeight = `${(accuracy * 100).toString()}%`
     const aspectRatio = width ? null : 0.8
-    const stampActive = accuracy > 0.85 && showStamp && stamp
+    const imageActive = accuracy > 0.85 && showImage && image
 
     return (
-      <View style={[styles.root, { height, width, aspectRatio }]}>
-        <View style={{ width: "95%" }}>
-          {stampActive && this.renderStamp()}
+      <View style={[styles.root, style]}>
+        <View style={{ height, width, aspectRatio }}>
+          {imageActive && this.renderImage()}
           <View style={styles.row}>
             <View style={styles.outerTopLeft}>
               <View
@@ -145,7 +157,7 @@ export class Identifier extends Component {
         <View
           style={[
             styles.accuracyGauge,
-            { height: gaugeHeight, backgroundColor: this.handleGaugeColor() }
+            { height: gaugeHeight, width: gaugeWidth, backgroundColor: this.handleGaugeColor() }
           ]}
         />
       </View>
@@ -209,11 +221,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: INNER_WIDTH
   },
   accuracyGauge: {
-    width: "5%",
     backgroundColor: "green",
     marginLeft: 10,
     bottom: 0,
     top: 0,
     alignSelf: "flex-end"
+  },
+  image: {
+    resizeMode: "contain",
+    alignSelf: "center"
   }
 })
