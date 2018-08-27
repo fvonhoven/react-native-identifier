@@ -1,22 +1,16 @@
 {
-  "name": "InYourFace",
-  "version": "0.0.1",
-  "private": true,
+  "name": "react-native-identifier",
+  "version": "0.1.0",
+  "description": "An identifier window for a subject region",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "react": "16.4.1",
-    "react-native": "0.56.0"
-  },
-  "devDependencies": {
-    "babel-jest": "23.4.2",
-    "babel-preset-react-native": "^5",
-    "jest": "23.5.0",
-    "react-test-renderer": "16.4.1"
-  },
-  "jest": {
-    "preset": "react-native"
-  }
+  "author": "Frank von Hoven III",
+  "license": "MIT"
 }

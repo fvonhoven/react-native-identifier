@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { View, Slider, Text } from "react-native"
-import { Identifier } from "./Identifier"
+import { Identifier } from "react-native-identifier"
 
 export default class App extends Component {
   state = {
