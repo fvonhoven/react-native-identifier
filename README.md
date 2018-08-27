@@ -16,11 +16,11 @@ or
 
 #### Typical Usage
 
-![Typical Usage Example]("https://i.imgur.com/cR9QysY.gif")
+![Typical Usage Example](https://i.imgur.com/cR9QysY.gif)
 
 ##### With Optional Image Overlay
 
-![Optional Image Example]("https://i.imgur.com/bmDG3UH.gif")
+![Optional Image Example](https://i.imgur.com/bmDG3UH.gif)
 
 #### Example Usage
 
