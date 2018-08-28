@@ -108,7 +108,7 @@ export class Identifier extends Component {
 
     return (
       <View style={[styles.root, style]}>
-        <View style={{ height, width, aspectRatio }}>
+        <View>
           {imageActive && this.renderImage()}
           <View style={styles.row}>
             <View style={styles.outerTopLeft}>

@@ -10,9 +10,6 @@ export default class App extends Component {
 
   render() {
     const { accuracy } = this.state
-    const borderColor = this.state.borderActive ? "#00FF00" : "transparent"
-    const percent = accuracy * 100
-    const gaugeHeight = `${percent.toString()}%`
     return (
       <View style={{ flex: 1, justifyContent: "space-between", backgroundColor: "black" }}>
         <View style={{ margin: 50 }}>
