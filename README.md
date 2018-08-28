@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+### Table of Contents
+
+- [Description](#description)
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [GIF](#gif)
+  - [Typical Usage](#typical-usage)
+    - [With Optional Image Overlay](#with-optional-image-overlay)
+  - [Example Usage](#example-usage)
+  - [Props](#props)
+    - [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 #### Description
 
 A reticle for image detection
