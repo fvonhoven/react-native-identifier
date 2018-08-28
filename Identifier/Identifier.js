@@ -94,16 +94,9 @@ export class Identifier extends Component {
   }
 
   render() {
-    const {
-      accuracy,
-      image,
-      style,
-      style: { width, height },
-      gaugeWidth
-    } = this.props
+    const { accuracy, image, style, gaugeWidth } = this.props
     const { showImage } = this.state
     const gaugeHeight = `${(accuracy * 100).toString()}%`
-    const aspectRatio = width ? null : 0.8
     const imageActive = accuracy > 0.85 && showImage && image
 
     return (
@@ -172,8 +165,6 @@ const outer = {
 
 const styles = StyleSheet.create({
   root: {
-    borderWidth: 1,
-    borderColor: "black",
     flexDirection: "row"
   },
   row: {
