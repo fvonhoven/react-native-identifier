@@ -157,7 +157,7 @@ export class Identifier extends Component {
 }
 
 const outer = {
-  flex: 1,
+  // flex: 1,
   borderColor: "#FFFFFF70"
 }
 
