@@ -97,9 +97,8 @@ export class Identifier extends Component {
     const {
       accuracy,
       image,
-      style,
       gaugeWidth,
-      style: { position, top, left, width, height }
+      style: { top, left, width, height }
     } = this.props
     const { showImage } = this.state
     const gaugeHeight = `${(accuracy * 100).toString()}%`
