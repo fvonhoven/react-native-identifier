@@ -11,20 +11,17 @@ export default class App extends Component {
   render() {
     const { accuracy } = this.state
     return (
-      <View style={{ flex: 1, justifyContent: "space-between", backgroundColor: "black" }}>
-        <View style={{ margin: 50 }}>
-          <Slider
-            onValueChange={accuracy => this.setState({ accuracy })}
-            minimumTrackTintColor="#F6F"
-            style={{ width: 300 }}
-          />
-          <Text style={{ fontSize: 24, color: "white", alignSelf: "center" }}>
-            {accuracy.toFixed(4)}
-          </Text>
-        </View>
-        <View style={{ bottom: 100, alignItems: "center" }}>
-          <Identifier accuracy={accuracy} />
-        </View>
+      <View style={{ flex: 1, backgroundColor: "lightgray" }}>
+        <Identifier
+          accuracy={0.5}
+          style={{
+            position: "absolute",
+            top: "20%",
+            left: "20%",
+            width: "40%",
+            height: "20%"
+          }}
+        />
       </View>
     )
   }

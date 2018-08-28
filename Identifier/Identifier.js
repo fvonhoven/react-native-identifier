@@ -9,7 +9,6 @@ export class Identifier extends Component {
   state = { borderActive: false, showImage: false }
 
   static defaultProps = {
-    style: { height: 150, width: null },
     accuracy: 0,
     blinkRate: 750,
     gaugeWidth: 8
@@ -67,7 +66,6 @@ export class Identifier extends Component {
       imageStyle,
       style: { height, width }
     } = this.props
-    const aspectRatio = width ? null : 0.8
     return (
       <View
         style={{
@@ -76,7 +74,7 @@ export class Identifier extends Component {
           alignItems: "center"
         }}
       >
-        <Image style={[styles.image, { height, width, aspectRatio }, imageStyle]} source={image} />
+        <Image style={[styles.image, { height, width }, imageStyle]} source={image} />
       </View>
     )
   }
@@ -94,19 +92,14 @@ export class Identifier extends Component {
   }
 
   render() {
-    const {
-      accuracy,
-      image,
-      gaugeWidth,
-      style: { top, left, width, height }
-    } = this.props
+    const { accuracy, image, gaugeWidth, style } = this.props
     const { showImage } = this.state
     const gaugeHeight = `${(accuracy * 100).toString()}%`
     const imageActive = accuracy > 0.85 && showImage && image
 
     return (
-      <View style={{ width, height, top, left, flexDirection: "row" }}>
-        <View>
+      <View style={{ flexDirection: "row", ...style }}>
+        <View style={{ flex: 1 }}>
           {imageActive && this.renderImage()}
           <View style={styles.row}>
             <View style={styles.outerTopLeft}>
