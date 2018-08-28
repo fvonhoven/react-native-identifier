@@ -94,13 +94,19 @@ export class Identifier extends Component {
   }
 
   render() {
-    const { accuracy, image, style, gaugeWidth } = this.props
+    const {
+      accuracy,
+      image,
+      style,
+      gaugeWidth,
+      style: { position, top, left, width, height }
+    } = this.props
     const { showImage } = this.state
     const gaugeHeight = `${(accuracy * 100).toString()}%`
     const imageActive = accuracy > 0.85 && showImage && image
 
     return (
-      <View style={[styles.root, style]}>
+      <View style={{ width, height, top, left, flexDirection: "row" }}>
         <View>
           {imageActive && this.renderImage()}
           <View style={styles.row}>
