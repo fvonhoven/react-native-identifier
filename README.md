@@ -29,15 +29,23 @@ This library is intended for identifying and highlighting part of an image (usua
 or
 `yarn add react-native-identifier`
 
-### GIF
+### GIFs
 
 #### Typical Usage
 
 ![Typical Usage Example](https://i.imgur.com/cR9QysY.gif)
 
-##### With Optional Image Overlay
+##### Optional Image Overlay
 
 ![Optional Image Example](https://i.imgur.com/bmDG3UH.gif)
+
+#### Horizontal Meter
+
+![Horizontal Meter Example](https://i.imgur.com/fw8WtWU.gif)
+
+#### Horizontal Meter with Pulse
+
+![Horizontal Meter with Pulse Example](https://i.imgur.com/QI66NJY.gif)
 
 #### Example Usage
 
@@ -67,11 +75,13 @@ const myImage = require("./my-image.png")
 
 |         Name | Description                                                                                      | Default | Required |         Type          |
 | -----------: | :----------------------------------------------------------------------------------------------- | :------ | :------: | :-------------------: |
+|      `style` | An optional style override for the component - can be used to set its position on the screen     | N/A     |   YES    |       `Object`        |
 |   `accuracy` | The accuracy rate of the identification from 0-1                                                 | `0`     |    NO    |       `Number`        |
 |  `blinkRate` | The starting rate for the blinking indicators - increase for more delay - decrease for craziness | `750`   |    NO    |       `Number`        |
 |      `image` | An optional image to blink on the identifier when accuracy is > 0.85 (85%)                       | N/A     |    NO    | `Object` or `require` |
-|      `style` | An optional style override for the component - can be used to set its position on the screen     | N/A     |    NO    |       `Object`        |
 | `gaugeWidth` | Width of the accuracy indicator gauge                                                            | `8`     |    NO    |       `Number`        |
+| `horizontal` | Whether the accuracy gauge should be horizontal - underneath the reticle                         | `false` |    NO    |       `Boolean`       |
+|      `pulse` | Whether the horizontal gauge should pulse out                                                    | `false` |    NO    |       `Boolean`       |
 
 ##### License
 

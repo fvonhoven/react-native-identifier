@@ -1,17 +1,23 @@
 import React, { Component } from "react"
-import { StyleSheet, View, Image } from "react-native"
+import { StyleSheet, View, Image, Animated, Easing } from "react-native"
 
 const INNER_MARGIN = { margin: 5 }
 const OUTER_WIDTH = 5
 const INNER_WIDTH = 3
 
 export class Identifier extends Component {
-  state = { borderActive: false, showImage: false }
+  constructor(props) {
+    super(props)
+    this.state = { borderActive: false, showImage: false }
+    this.animatedMeter = new Animated.Value(0)
+  }
 
   static defaultProps = {
     accuracy: 0,
     blinkRate: 750,
-    gaugeWidth: 8
+    gaugeWidth: 8,
+    horizontal: true,
+    pulse: true
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -20,8 +26,8 @@ export class Identifier extends Component {
   }
 
   componentDidMount() {
+    const { blinkRate, accuracy, pulse, horizontal } = this.props
     const timer = () => {
-      const { blinkRate, accuracy } = this.props
       setTimeout(() => {
         this.setState(state => {
           return { borderActive: !state.borderActive }
@@ -31,6 +37,7 @@ export class Identifier extends Component {
     }
     timer()
     this.startImage()
+    horizontal && pulse && this.pulse()
   }
 
   handleBorderColor() {
@@ -57,6 +64,17 @@ export class Identifier extends Component {
       return "yellow"
     } else {
       return "transparent"
+    }
+  }
+
+  handlePulseRate() {
+    const { accuracy } = this.props
+    if (accuracy > 0.85) {
+      return 400
+    } else if (accuracy < 0.5) {
+      return 700
+    } else if (0.5 > accuracy < 0.85) {
+      return 600
     }
   }
 
@@ -91,14 +109,35 @@ export class Identifier extends Component {
     this.interval && this.interval.clear()
   }
 
+  pulse() {
+    this.animatedMeter.setValue(0.1)
+    Animated.timing(this.animatedMeter, {
+      toValue: 1,
+      duration: this.handlePulseRate(),
+      easing: Easing.sin
+    }).start(() => this.pulse())
+  }
+
   render() {
-    const { accuracy, image, gaugeWidth, style } = this.props
+    const { accuracy, image, gaugeWidth, style, pulse, horizontal } = this.props
     const { showImage } = this.state
     const gaugeHeight = `${(accuracy * 100).toString()}%`
     const imageActive = accuracy > 0.85 && showImage && image
-
+    const pulser = this.animatedMeter.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, accuracy]
+    })
+    console.log("HEY", pulser)
+    const gaugeTransform = [{ scaleX: horizontal && pulse ? pulser : 1 }]
     return (
-      <View style={{ flexDirection: "row", marginLeft: gaugeWidth + 10, ...style }}>
+      <View
+        style={{
+          flexDirection: horizontal ? "column" : "row",
+          marginLeft: horizontal ? 0 : gaugeWidth + 10,
+          marginTop: horizontal ? gaugeWidth + 10 : 0,
+          ...style
+        }}
+      >
         <View style={{ flex: 1 }}>
           {imageActive && this.renderImage()}
           <View style={styles.row}>
@@ -145,10 +184,18 @@ export class Identifier extends Component {
             </View>
           </View>
         </View>
-        <View
+        <Animated.View
           style={[
             styles.accuracyGauge,
-            { height: gaugeHeight, width: gaugeWidth, backgroundColor: this.handleGaugeColor() }
+            {
+              height: horizontal ? gaugeWidth : gaugeHeight,
+              width: horizontal ? gaugeHeight : gaugeWidth,
+              backgroundColor: this.handleGaugeColor(),
+              marginLeft: horizontal ? 0 : 10,
+              marginTop: horizontal ? 10 : 0,
+              alignSelf: horizontal ? "center" : "flex-end",
+              transform: gaugeTransform
+            }
           ]}
         />
       </View>
@@ -211,10 +258,8 @@ const styles = StyleSheet.create({
   },
   accuracyGauge: {
     backgroundColor: "green",
-    marginLeft: 10,
     bottom: 0,
-    top: 0,
-    alignSelf: "flex-end"
+    top: 0
   },
   image: {
     resizeMode: "contain",

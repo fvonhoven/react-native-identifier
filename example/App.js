@@ -10,7 +10,6 @@ export default class App extends Component {
 
   render() {
     const { accuracy } = this.state
-    const gaugeHeight = `${(accuracy * 100).toString()}%`
     return (
       <View style={styles.root}>
         <View style={styles.topContainer}>
@@ -31,7 +30,6 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    justifyContent: "space-between",
     backgroundColor: "black"
   },
   topContainer: {
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
   identifier: {
     position: "absolute",
     top: "40%",
-    left: "32%",
+    left: "27%",
     width: "50%",
     height: "20%"
   }
