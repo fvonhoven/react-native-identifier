@@ -16,8 +16,8 @@ export class Identifier extends Component {
     accuracy: 0,
     blinkRate: 750,
     gaugeWidth: 8,
-    horizontal: true,
-    pulse: true
+    horizontal: false,
+    pulse: false
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -26,8 +26,9 @@ export class Identifier extends Component {
   }
 
   componentDidMount() {
-    const { blinkRate, accuracy, pulse, horizontal } = this.props
+    const { pulse, horizontal } = this.props
     const timer = () => {
+      const { blinkRate, accuracy } = this.props
       setTimeout(() => {
         this.setState(state => {
           return { borderActive: !state.borderActive }
