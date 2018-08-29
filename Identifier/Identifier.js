@@ -98,7 +98,7 @@ export class Identifier extends Component {
     const imageActive = accuracy > 0.85 && showImage && image
 
     return (
-      <View style={{ flexDirection: "row", ...style }}>
+      <View style={{ flexDirection: "row", marginLeft: gaugeWidth + 10, ...style }}>
         <View style={{ flex: 1 }}>
           {imageActive && this.renderImage()}
           <View style={styles.row}>
