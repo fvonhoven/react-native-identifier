@@ -41,11 +41,11 @@ or
 
 #### Horizontal Meter
 
-![Horizontal Meter Example](https://i.imgur.com/fw8WtWU.gif)
+![Horizontal Meter Example](https://i.imgur.com/LU2gIoo.gif)
 
 #### Horizontal Meter with Pulse
 
-![Horizontal Meter with Pulse Example](https://i.imgur.com/QI66NJY.gif)
+![Horizontal Meter with Pulse Example](https://i.imgur.com/xx5nTfN.gif)
 
 #### Example Usage
 

@@ -4117,9 +4117,9 @@ react-is@^16.4.1:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.2.tgz#84891b56c2b6d9efdee577cc83501dfc5ecead88"
 
-react-native-identifier@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-identifier/-/react-native-identifier-0.4.0.tgz#649fe2b0384d8cf8c5a98279c41272a23a4c29dd"
+react-native-identifier@0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-identifier/-/react-native-identifier-0.4.1.tgz#a04a19daf93eda71b8cb08fb1d20a3af7de23e33"
 
 react-native@0.56.0:
   version "0.56.0"

@@ -21,7 +21,7 @@ export default class App extends Component {
           />
           <Text style={styles.accuracy}>{accuracy.toFixed(4)}</Text>
         </View>
-        <Identifier accuracy={accuracy} style={styles.identifier} />
+        <Identifier accuracy={accuracy} style={styles.identifier} horizontal />
       </View>
     )
   }
