@@ -75,7 +75,7 @@ const myImage = require("./my-image.png")
 
 |         Name | Description                                                                                      | Default | Required |         Type          |
 | -----------: | :----------------------------------------------------------------------------------------------- | :------ | :------: | :-------------------: |
-|      `key`   | An optional style override for the component key                                                      | N/A     | 
+|      `key`   | An optional style override for the component key                                                 | N/A     |    NO    |       `String`        |
 |      `style` | An optional style override for the component - can be used to set its position on the screen     | N/A     |   YES    |       `Object`        |
 |   `accuracy` | The accuracy rate of the identification from 0-1                                                 | `0`     |    NO    |       `Number`        |
 |  `blinkRate` | The starting rate for the blinking indicators - increase for more delay - decrease for craziness | `750`   |    NO    |       `Number`        |
