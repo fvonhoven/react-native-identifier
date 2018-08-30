@@ -115,7 +115,8 @@ export class Identifier extends Component {
     Animated.timing(this.animatedMeter, {
       toValue: 1,
       duration: this.handlePulseRate(),
-      easing: Easing.sin
+      easing: Easing.sin,
+      useNativeDriver: true
     }).start(() => this.pulse())
   }
 
