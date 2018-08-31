@@ -121,7 +121,7 @@ export class Identifier extends Component {
   }
 
   render() {
-    const { accuracy, image, gaugeWidth, style, pulse, horizontal } = this.props
+    const { accuracy, image, gaugeWidth, style, pulse, horizontal, key } = this.props
     const { showImage } = this.state
     const gaugeHeight = `${(accuracy * 100).toString()}%`
     const imageActive = accuracy > 0.85 && showImage && image
@@ -133,6 +133,7 @@ export class Identifier extends Component {
     const gaugeTransform = [{ scaleX: horizontal && pulse ? pulser : 1 }]
     return (
       <View
+        key={key}
         style={{
           flexDirection: horizontal ? "column" : "row",
           marginLeft: horizontal ? 0 : gaugeWidth + 10,
