@@ -1,6 +1,6 @@
 {
   "name": "react-native-identifier",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "A reticle for image detection",
   "main": "index.js",
   "directories": {
