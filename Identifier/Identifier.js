@@ -129,7 +129,6 @@ export class Identifier extends Component {
       inputRange: [0, 1],
       outputRange: [0, accuracy]
     })
-    console.log("HEY", pulser)
     const gaugeTransform = [{ scaleX: horizontal && pulse ? pulser : 1 }]
     return (
       <View
