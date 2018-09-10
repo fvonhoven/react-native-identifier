@@ -10,6 +10,7 @@
   - [Typical Usage](#typical-usage)
   - [With Optional Image Overlay](#with-optional-image-overlay)
 - [Example Usage](#example-usage)
+- [Is it Nic Cage?](#is-it-nic-cage)
 - [Props](#props)
 - [License](#license)
 
@@ -70,6 +71,10 @@ const myImage = require("./my-image.png")
   gaugeWidth={12}
 />
 ```
+
+#### Is It Nic Cage?
+
+![Nic or Not](https://i.imgur.com/DZqbGZy.gif)
 
 #### Props
 
