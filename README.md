@@ -74,7 +74,8 @@ const myImage = require("./my-image.png")
 
 #### Is It Nic Cage?
 
-![Nic or Not](https://i.imgur.com/DZqbGZy.gif)
+<!-- ![Nic or Not](https://imgur.com/DZqbGZy.gif) -->
+<img src="https://imgur.com/DZqbGZy.gif" width="300" height="300" />
 
 #### Props
 
